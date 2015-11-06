@@ -1,0 +1,10 @@
+<ion-view view-title="Todolists">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="todolist in todolists" href="#/app/todolists/{{todolist.id}}">
+        {{todolist.title}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+

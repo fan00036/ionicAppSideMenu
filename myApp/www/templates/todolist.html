@@ -1,0 +1,24 @@
+<ion-view view-title="Todolist">
+    <ion-content>
+                <ul ng-repeat="item in items">
+                    <li>
+                            <ion-checkbox ng-model="item.checked" ng-click="checkItem(item)" >{{item.title}} </ion-checkbox>
+                        
+                    </li>
+                </ul>
+  
+        
+    </ion-content>
+    
+    
+    <div class="list inputBar">
+            <div class="item item-input-inset">
+            <label class="item-input-wrapper">
+            <input id="formGroupInputLarge" type="text" ng-model="todoItem" placeholder="Start typing..." required/>
+            </label>
+                <button type="button" class="button button-small" ng-click="addItem(todoItem)">&nbsp;&nbsp;Add&nbsp;&nbsp;</button>
+                <button type="button" class="button button-small" ng-click="clearAll()">Clear All</button>
+            </div>
+        </div>
+   
+</ion-view>
