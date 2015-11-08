@@ -3,3 +3,15 @@
     bottom: 0;
     width: 100%;
 }/* Empty. Add your own CSS if you like */
+.checkboxItem{
+    width: 85%;
+    height: 49px;
+    float: left;
+}
+.deleteBtn{
+    width: 15%;
+    float: right;
+    height: 47px;
+    font-size: 12px;
+  
+}

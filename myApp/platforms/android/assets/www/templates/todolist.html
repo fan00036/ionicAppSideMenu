@@ -2,7 +2,8 @@
     <ion-content>
                 <ul ng-repeat="item in items">
                     <li>
-                            <ion-checkbox ng-model="item.checked" ng-click="checkItem(item)" >{{item.title}} </ion-checkbox>
+                            <ion-checkbox class="checkboxItem" ng-model="item.checked" ng-click="checkItem(item)" >{{item.title}} </ion-checkbox><a type="button" class="button button-outline button-assertive deleteBtn icon ion-trash-a" ng-click="remove(item)" ></a>
+                           
                         
                     </li>
                 </ul>

@@ -51,13 +51,9 @@ angular.module('starter.controllers', [])
 
     var notificationOn = localStorageService.get("notify");
 
-    //     if((item.checked).length==($scope.items).length && notificationOn)
-    //       if($scope.items && notificationOn){
-    //            alert("notifying!");
-    //           $scope.scheduleSingleNotification();
-    //       }
 
     var scheduleSingleNotification = function () {
+        if(!notificationOn)return;
         for (var i = 0; i < $scope.items.length; i++) {
             if(!$scope.items[i].checked){
                 return;
