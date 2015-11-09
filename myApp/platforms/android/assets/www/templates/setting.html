@@ -1,9 +1,9 @@
 <ion-view view-title="Settings">
   <ion-content>
 
-          <ion-toggle ng-model="isVibrate" toggle-class="toggle-calm" ng-change="settingChanged()">Vibration</ion-toggle>
+          <ion-toggle ng-model="isVibrate" toggle-class="toggle-calm" ng-change="setVibrate(isVibrate)">Vibration</ion-toggle>
           
-          <ion-toggle ng-model="isNotify" toggle-class="toggle-calm" ng-change="settingChanged()">Notifications</ion-toggle>
+          <ion-toggle ng-model="isNotify" toggle-class="toggle-calm" ng-change="setNotify(isNotify)">Notifications</ion-toggle>
           
  
   </ion-content>

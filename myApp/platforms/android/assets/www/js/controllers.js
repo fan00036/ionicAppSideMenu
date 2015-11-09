@@ -1,33 +1,25 @@
 angular.module('starter.controllers', [])
 
-
-.controller('TodolistCtrl', function ($scope, $stateParams, localStorageService, $cordovaVibration, $cordovaLocalNotification,TodoService) {
-
+.controller('TodolistCtrl', function ($scope, $stateParams, localStorageService, $cordovaVibration, $cordovaLocalNotification,TodoService,SettingFactory) {
     var listID = ($stateParams.todolistId);
     $scope.items = TodoService.getOneTodolist(listID);
     $scope.todolists=TodoService.getAll();
 
-    var vibrateOn = localStorageService.get("vibrate");
-    var notificationOn = localStorageService.get("notify");
-
+    var vibrateOn = SettingFactory.isVibrate();
+    var notificationOn = SettingFactory.isNotify();
     $scope.clearAll = function () {
         $scope.items = [];
         TodoService.setTodolist(listID,this.items);
     }
 
     $scope.addItem = function (todoItem) {
+        this.todoItem = "";
         var listItem = {};
         listItem.title = todoItem;
         listItem.checked = false;
         this.items.push(listItem);
-        TodoService.addItemInTodolist(listID,listItem);
-        this.todoItem = "";
+        TodoService.setTodolist(listID,this.items);
     }
-
-    //    $scope.shouldShowDelete = false;
-    //    $scope.listCanSwipe = true;
-
-
 
     $scope.remove = function (item) {
         var itemindex = this.items.indexOf(item);
@@ -48,9 +40,6 @@ angular.module('starter.controllers', [])
         }
         scheduleSingleNotification();
     }
-
-    var notificationOn = localStorageService.get("notify");
-
 
     var scheduleSingleNotification = function () {
         if(!notificationOn)return;
@@ -74,15 +63,17 @@ angular.module('starter.controllers', [])
 
 })
 
-
-
-.controller('SettingController', function ($scope, localStorageService) {
-    $scope.isVibrate = localStorageService.get("vibrate") || true;
-    $scope.isNotify = localStorageService.get("notify")|| true;
-
-    $scope.settingChanged = function () {
-        localStorageService.set("notify", this.isNotify);
-        localStorageService.set("vibrate", this.isVibrate);
-    };
+.controller('SettingController', function ($scope, localStorageService,SettingFactory) {
+    $scope.isVibrate=SettingFactory.isVibrate();
+    $scope.isNotify=SettingFactory.isNotify();
+    
+    $scope.setVibrate=function(vibrate)
+    {
+        SettingFactory.setVibrate(vibrate);
+    }
+    $scope.setNotify=function(notify)
+    {
+        SettingFactory.setNotify(notify); 
+    }
 
 });
